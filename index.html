@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="A modern and responsive To-Do List application built with HTML, CSS and JavaScript."
+    >
+
+    <title>TaskFlow - To-Do List</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Background decoration -->
+    <div class="background-shape shape-one"></div>
+    <div class="background-shape shape-two"></div>
+
+    <!-- Main Application -->
+    <main class="app-container">
+
+        <!-- Header -->
+        <header class="app-header">
+
+            <div>
+                <p class="eyebrow">PRODUCTIVITY APP</p>
+
+                <h1>
+                    Task<span>Flow</span>
+                </h1>
+
+                <p class="subtitle">
+                    Organize your day, one task at a time.
+                </p>
+            </div>
+
+            <button
+                id="themeToggle"
+                class="theme-button"
+                aria-label="Toggle dark mode"
+                title="Toggle theme"
+            >
+                🌙
+            </button>
+
+        </header>
+
+
+        <!-- Add Task Section -->
+        <section class="add-task-section">
+
+            <div class="task-input-wrapper">
+
+                <input
+                    type="text"
+                    id="taskInput"
+                    placeholder="What needs to be done?"
+                    maxlength="100"
+                    autocomplete="off"
+                >
+
+                <button id="addTaskButton" class="add-button">
+                    <span>+</span>
+                    Add Task
+                </button>
+
+            </div>
+
+
+            <div class="task-options">
+
+                <div class="option-group">
+
+                    <label for="prioritySelect">
+                        Priority
+                    </label>
+
+                    <select id="prioritySelect">
+
+                        <option value="low">
+                            Low
+                        </option>
+
+                        <option value="medium" selected>
+                            Medium
+                        </option>
+
+                        <option value="high">
+                            High
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="option-group">
+
+                    <label for="dueDate">
+                        Due date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dueDate"
+                    >
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Statistics -->
+        <section class="stats">
+
+            <div class="stat-card">
+
+                <span class="stat-number" id="totalTasks">
+                    0
+                </span>
+
+                <span class="stat-label">
+                    Total
+                </span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span class="stat-number" id="activeTasks">
+                    0
+                </span>
+
+                <span class="stat-label">
+                    Active
+                </span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span class="stat-number" id="completedTasks">
+                    0
+                </span>
+
+                <span class="stat-label">
+                    Completed
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- Toolbar -->
+        <section class="toolbar">
+
+            <div class="filters">
+
+                <button
+                    class="filter-button active"
+                    data-filter="all"
+                >
+                    All
+                </button>
+
+                <button
+                    class="filter-button"
+                    data-filter="active"
+                >
+                    Active
+                </button>
+
+                <button
+                    class="filter-button"
+                    data-filter="completed"
+                >
+                    Completed
+                </button>
+
+            </div>
+
+
+            <div class="toolbar-actions">
+
+                <div class="search-wrapper">
+
+                    <span class="search-icon">
+                        🔍
+                    </span>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search tasks..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+                <button
+                    id="clearCompleted"
+                    class="clear-button"
+                >
+                    Clear completed
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- Task List -->
+        <section class="tasks-section">
+
+            <ul id="taskList" class="task-list">
+            </ul>
+
+
+            <!-- Empty State -->
+            <div
+                id="emptyState"
+                class="empty-state"
+            >
+
+                <div class="empty-icon">
+                    ✓
+                </div>
+
+                <h2 id="emptyTitle">
+                    No tasks yet
+                </h2>
+
+                <p id="emptyMessage">
+                    Add your first task and start being productive.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Footer -->
+        <footer class="app-footer">
+
+            <p>
+                Your tasks are saved automatically in your browser.
+            </p>
+
+            <button
+                id="clearAll"
+                class="danger-button"
+            >
+                Clear all tasks
+            </button>
+
+        </footer>
+
+    </main>
+
+
+    <!-- Toast Notification -->
+    <div
+        id="toast"
+        class="toast"
+        role="status"
+        aria-live="polite"
+    >
+        Task added successfully!
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
